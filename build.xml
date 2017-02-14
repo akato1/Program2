@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<project name = "WebServer" default = "compile" basedir = ".">
+	<property name = "build" location = "build"/>
+	<property name = "src" location = "./"/>
+	
+	<target name = "clean">
+		<delete dir = "${build}"/>
+	</target>
+	
+	<target name = "init" depends = "clean">
+		<mkdir dir =  "${build}"/>
+		<mkdir dir =  "${build}/classes"/>
+	</target>
+	
+	<target name = "compile" depends = "init">
+		<javac srcdir = "${src}" destdir = "${build}/classes"/>
+	</target>
+	
+	<target name="run" depends="compile">
+		<java classname = "WebServer" classpath = "${build}/classes"/>
+	</target>
+
+</project>
+
